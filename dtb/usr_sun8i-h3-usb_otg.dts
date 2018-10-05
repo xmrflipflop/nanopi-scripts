@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target = <&usb_otg>;
+		__overlay__ {
+			status = "okay";
+			dr_mode = "otg";
+		};
+	};
+
+	fragment@1 {
+		target = <&usbphy>;
+		 __overlay__ {
+			status = "okay";
+		};
+	};
+};
+
