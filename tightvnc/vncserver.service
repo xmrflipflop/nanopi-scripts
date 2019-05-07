@@ -1,0 +1,15 @@
+[Unit]
+Description=TightVNC Server (localhost) Service
+After=network.target
+
+[Service]
+User=xmrflipflop
+Type=forking
+ExecStart=/usr/bin/vncserver -depth 16 -geometry 1024x768 :1 -localhost
+ExecStop=/usr/bin/vncserver -kill :1
+#TimeoutSec=30
+#Restart=on-failure
+#RestartSec=30
+
+[Install]
+WantedBy=default.target
