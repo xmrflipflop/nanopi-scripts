@@ -1,4 +1,12 @@
 # adapted from https://superuser.com/questions/634628/is-there-a-script-to-add-port-forwarding-rule-in-home-router
 sudo apt install miniupnpc
 
-upnpc -a `ifconfig wlan0 | grep "inet addr" | cut -d : -f 2 | cut -d " " -f 1` 22 22 TCP
+cp -r miniupnp ~/.miniupnp
+
+chmod 700 ~/.miniupnp/upnpc-ssh.sh
+
+# update cronjob
+# Example entry
+## Every hour
+#0 */1 * * * ~/.miniupnp/upnpc-ssh.sh >/dev/null 2>&1
+crontab -e
